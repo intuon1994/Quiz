@@ -1,25 +1,44 @@
 <div class="container">
     <div class="header">IT 02-2</div>
     <div class="form-container">
-        <div class="form-main">
+        <form [formGroup]="registerForm">
+                <div class="form-main">
             <div class="row">
                 <label>User</label>
-                <input type="text" placeholder="User">
+                <input formControlName="username" type="text" placeholder="User"
+                [class.error]="registerForm.controls['username'].dirty && registerForm.hasError('required','username')">
             </div>
+               <small class="text-danger"
+                    *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required','username')">
+                    *Please enter user
+                </small>
             <div class="row">
                 <label>Password</label>
-                <input type="password" placeholder="Password">
+                <input formControlName="password" type="password" placeholder="Password"
+                [class.error]="registerForm.controls['password'].dirty && registerForm.hasError('required','password')">
             </div>
+             <small class="text-danger"
+                    *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')">
+                    *Please enter password
+                </small>
             <div class="row">
                 <label>ConfirmPassword</label>
-                <input type="password" placeholder="ConfirmPassword">
+                <input formControlName="confirmpassword" type="password" placeholder="ConfirmPassword"
+                [class.error]="registerForm.controls['confirmpassword'].dirty && registerForm.hasError('required','confirmpassword')">
             </div>
+             <small class="text-danger"
+                    *ngIf="registerForm.controls['confirmpassword'].dirty && registerForm.hasError('required','confirmpassword')">
+                    *Please enter confirmpassword
+                </small>
 
             <div class="row">
                 <label></label>
-                <button class="btn-submit">สมัครสมาชิก</button>
+                <button (click)="onRegister()" class="btn-submit">สมัครสมาชิก</button>
             </div>
             
         </div>
+
+        </form>
+    
     </div>
 </div>

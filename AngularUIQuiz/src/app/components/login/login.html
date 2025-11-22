@@ -2,23 +2,40 @@
     <div class="header">IT 02-1</div>
     <div class="form-container">
         <div class="form-main">
-            <div class="row">
-                <label>User</label>
-                <input type="text" placeholder="User">
-            </div>
-            <div class="row">
-                <label>Password</label>
-                <input type="password" placeholder="Password">
-            </div>
+            <form [formGroup]="loginForm">
+                <div class="row">
+                    <label>User</label>
+                    <input formControlName="username" type="text" placeholder="User"
+                        [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required','username')">
+                </div>
+                <small class="text-danger"
+                    *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')">
+                    *Please enter user
+                </small>
+                <div class="row">
+                    <label>Password</label>
 
-            <div class="row">
-                <label></label>
-                <button class="btn-submit">ลงชื่อเข้าใช้งาน</button>
-            </div>
-            <div class="row">
-                <label></label>
-                <a routerLink="/register" class="register-link">สมัครสมาชิก</a>
-            </div>
+                    <input formControlName="password" type="password" placeholder="Password"
+                        [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
+                </div>
+                <small class="text-danger"
+                    *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
+                    *Please enter password
+                </small>
+
+                <div class="row">
+                    <label></label>
+                    <button (click)="onSubmit()" type="submit" class="btn-submit">
+                        ลงชื่อเข้าใช้งาน
+                    </button>
+                </div>
+                <div class="row">
+                    <label></label>
+                    <a routerLink="/register" class="register-link">สมัครสมาชิก</a>
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>

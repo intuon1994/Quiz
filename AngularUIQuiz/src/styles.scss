@@ -106,3 +106,19 @@ input::placeholder{
 .register-link:hover {
     text-decoration: underline;
 }
+
+.text-danger {
+    color: red;
+   
+}
+small {
+    font-size: 13px;
+    text-align: center;
+}
+
+.error{
+    outline: none; 
+    border: 1px solid red;
+    box-shadow: 0 0 5px rgba(240, 97, 97, 0.5); 
+    background-color: #ffffff;
+}
