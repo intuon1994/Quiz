@@ -2,43 +2,48 @@
     <div class="header">IT 02-2</div>
     <div class="form-container">
         <form [formGroup]="registerForm">
-                <div class="form-main">
-            <div class="row">
-                <label>User</label>
-                <input formControlName="username" type="text" placeholder="User"
-                [class.error]="registerForm.controls['username'].dirty && registerForm.hasError('required','username')">
-            </div>
-               <small class="text-danger"
+            <div class="form-main">
+                <div class="row">
+                    <label>User</label>
+                    <input formControlName="username" type="text" placeholder="User"
+                        [class.error]="registerForm.controls['username'].dirty && registerForm.hasError('required','username')">
+                </div>
+                <small class="text-danger"
                     *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required','username')">
                     *Please enter user
                 </small>
-            <div class="row">
-                <label>Password</label>
-                <input formControlName="password" type="password" placeholder="Password"
-                [class.error]="registerForm.controls['password'].dirty && registerForm.hasError('required','password')">
-            </div>
-             <small class="text-danger"
+                <div class="row">
+                    <label>Password</label>
+                    <input formControlName="password" type="password" placeholder="Password"
+                        [class.error]="registerForm.controls['password'].dirty && registerForm.hasError('required','password')">
+                </div>
+                <small class="text-danger"
                     *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')">
                     *Please enter password
                 </small>
-            <div class="row">
-                <label>ConfirmPassword</label>
-                <input formControlName="confirmpassword" type="password" placeholder="ConfirmPassword"
-                [class.error]="registerForm.controls['confirmpassword'].dirty && registerForm.hasError('required','confirmpassword')">
-            </div>
-             <small class="text-danger"
-                    *ngIf="registerForm.controls['confirmpassword'].dirty && registerForm.hasError('required','confirmpassword')">
-                    *Please enter confirmpassword
+                <div class="row">
+                    <label>ConfirmPassword</label>
+                    <input formControlName="confirmpassword" type="password" placeholder="ConfirmPassword"
+                        [class.error]="registerForm.get('confirmpassword')?.dirty &&
+                       (registerForm.get('confirmpassword')?.hasError('required') ||
+                        registerForm.get('confirmpassword')?.hasError('mismatch'))">
+
+                </div>
+                <small class="text-danger"
+                    *ngIf="registerForm.get('confirmpassword')?.dirty && registerForm.get('confirmpassword')?.hasError('required')">
+                    *Please enter confirm password
                 </small>
 
-            <div class="row">
-                <label></label>
-                <button (click)="onRegister()" class="btn-submit">สมัครสมาชิก</button>
-            </div>
-            
-        </div>
+                <small class="text-danger"
+                    *ngIf="registerForm.get('confirmpassword')?.dirty && registerForm.get('confirmpassword')?.hasError('mismatch')">
+                    Password and Confirm Password do not match
+                </small>
 
+                <div class="row">
+                    <label></label>
+                    <button (click)="onRegister()" class="btn-submit">สมัครสมาชิก</button>
+                </div>
+            </div>
         </form>
-    
     </div>
 </div>
