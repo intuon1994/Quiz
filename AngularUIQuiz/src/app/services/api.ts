@@ -13,15 +13,9 @@ export class ApiService {
 
   getUsers() {
     return this.http.get<any>(this.baseUrl);
-
-    //https://localhost:7108/api/Account
   }
-
 
   getUserName(username: string) {
    return this.http.get<any>(`${this.baseUrl}getusername/${username}`);
-
   }
-
-
 }
